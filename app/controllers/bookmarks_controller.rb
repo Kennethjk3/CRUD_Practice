@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
 
   def create
     # Saves to DB
-    @bookmark = Bookmark.create(bookmark_parms)
+    @bookmark = Bookmark.create(bookmark_params)
 
     # # This way allows for testing
     # @bookmark = Bookmark.new(bookmark_parms)
@@ -31,8 +31,9 @@ class BookmarksController < ApplicationController
 
   private
 
-  def bookmark_parms
-    params.require(:bookmark).permit(:url,  :title, :comment, :favorite)
+  def bookmark_params
+    binding.pry
+    params.require(:bookmark).permit(:url, :title, :comment, :favorite)
   end
 
 
