@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 
 #Destroy > Delete because it removes blank rows and CHILD dependancies
+
 # when deleted
 
 
