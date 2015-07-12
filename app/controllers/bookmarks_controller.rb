@@ -5,4 +5,22 @@ class BookmarksController < ApplicationController
     #Bookmark.all == SELECT * FROM bookmarks;
     @bookmarks = Bookmark.all
   end
+
+  def new
+    #used as placeholder in html/ object.exsist? = no
+    @bookmark = Bookmark.new
+  end
+
+  def create
+
+  end
+
+
+
+
+
+
+
+
+
 end
