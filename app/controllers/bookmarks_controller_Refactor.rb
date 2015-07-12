@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
   end
 
   def new
-    #used as placeholder in html/ object.exsist? = no
     @bookmark = Bookmark.new
   end
 
