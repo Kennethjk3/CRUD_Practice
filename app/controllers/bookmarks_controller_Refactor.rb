@@ -20,29 +20,27 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    # Creates and Saves to DB
-    @bookmark = Bookmark.create(bookmark_params)
-    redirect_to action: :index
-    # # This way allows for testing
-    # @bookmark = Bookmark.new(bookmark_parms)
-    # if @bookmark.save
-    #   puts "Saved"
-    # else
-    #   puts "Try again"
-    # end
+    @bookmark = Bookmark.new(bookmark_params)
+    # Exsists but isn't saved to Database
+    if bookmark.save
+      redirect_to action: :index
+      # this does create a HTTP request
+    else
+      render :new
+      #doesnt create a new HTTP request, so no need to create new objects
+      # render looks for template with same name
+    end
   end
 
   def edit
   end
 
   def update
-    @bookmark.update_attributes(bookmark_params)
-    redirect_to action: :index
-    # if @bookmark.save
-    #   puts "Saved"
-    # else
-    #   puts "Try again"
-    # end
+    if @bookmark.update_attributes(bookmark_params)
+      redirect_to action: :index
+    else
+      render :edit
+    end
   end
 
   def destroy
