@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'bookmarks#index'
-  resources :bookmarks, only: [:new, :create, :destroy]
+  resources :bookmarks, only: [:new, :create, :edit, :update, :destroy]
 
 
 
 #Destroy > Delete because it removes blank rows and CHILD dependancies
-# when deleted 
+# when deleted
 
 
 

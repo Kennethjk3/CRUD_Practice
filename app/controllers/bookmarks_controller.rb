@@ -22,8 +22,26 @@ class BookmarksController < ApplicationController
     # else
     #   puts "Try again"
     # end
+
     redirect_to action: :index
   end
+
+  def edit
+    @bookmark = Bookmark.find(params[:id])
+  end
+
+  def update
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.update_attributes(bookmark_params)
+    redirect_to action: :index
+    # if @bookmark.save
+    #   puts "Saved"
+    # else
+    #   puts "Try again"
+    # end
+  end
+
+
 
   def destroy
     #find object to delete with .find
@@ -36,11 +54,9 @@ class BookmarksController < ApplicationController
 
 
 
-
   private
 
   def bookmark_params
-    binding.pry
     params.require(:bookmark).permit(:url, :title, :comment, :favorite)
   end
 
