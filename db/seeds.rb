@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+# bookmarks need url, title , comment(optional), fav(optional)
+
+  Bookmark.create(
+    url: "http://github.com",
+    title: "Github",
+    comment: "Git Init!"
+  )
+
+  Bookmark.create(
+    url: "http://facebook.com",
+    title: "Facebook",
+    comment: "EVERYONE IS HAVING BABIES!"
+  )
+
+  Bookmark.create(
+      url: "http://guides.rubyonrails.org.com",
+      title: "Rails Guide",
+      comment: "Check it out!",
+      favorite: true
+  )
