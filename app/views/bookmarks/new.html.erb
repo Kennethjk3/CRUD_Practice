@@ -1,3 +1,5 @@
+<!-- symbol has to match .label and .text_field so ruby knows that that :label goes with that :text_field-->
+
 <%= form_for @bookmark do |f| %>
   <%= f.label :url  %>
   <%= f.text_field :url  %>
@@ -14,4 +16,4 @@
   <%= f.submit %>
 <% end %>
 
-<!-- symbol has to match .label and .text_field so ruby knows that that :label goes with that :text_field-->
+<%= link_to "Back to All Bookmarks", root_path %>
