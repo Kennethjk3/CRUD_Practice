@@ -1,5 +1,4 @@
 <h1>Bookmark CRUD Demo</h1>
-
 <ul>
   <% @bookmarks.each do |bookmark| %>
   <!--  "== true" is not needed -->
@@ -7,8 +6,14 @@
       <% if bookmark.favorite == true %> * <% end %>
       <%= link_to bookmark.title, bookmark.url %>
       <%= bookmark.comment %>
+      <!-- Need to define method: :delete -->
+      <%= link_to "Remove", bookmark_path(bookmark), method: :delete %>
     </li>
     <% end %>
 </ul>
 
 <%= link_to "Create New Bookmark", new_bookmark_path %>
+
+
+
+<!--  -->

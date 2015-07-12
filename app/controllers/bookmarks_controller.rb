@@ -25,6 +25,14 @@ class BookmarksController < ApplicationController
     redirect_to action: :index
   end
 
+  def destroy
+    #find object to delete with .find
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to action: :index
+  end
+
+
 
 
 
