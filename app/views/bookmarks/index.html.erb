@@ -1,7 +1,12 @@
 <h1>Bookmark CRUD Demo</h1>
 
-<% @bookmarks.each do |bookmark| %>
-  <p>
-    <%= bookmark.url %>
-  </p>
-  <% end %>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+  <!--  "== true" is not needed -->
+    <li>
+      <% if bookmark.favorite == true %> * <% end %>
+      <%= link_to bookmark.title, bookmark.url %>
+      <%= bookmark.comment %>
+    </li>
+    <% end %>
+</ul>
