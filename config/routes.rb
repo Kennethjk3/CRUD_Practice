@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'bookmarks#index'
-  resources :bookmarks, only: [:new, :create, :edit, :update, :destroy]
+  resources :bookmarks, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
 
 

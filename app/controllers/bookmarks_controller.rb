@@ -6,6 +6,10 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.all
   end
 
+  def show
+    @bookmark = Bookmark.find(params[:id])
+  end
+
   def new
     #used as placeholder in html/ object.exsist? = no
     @bookmark = Bookmark.new
@@ -40,8 +44,6 @@ class BookmarksController < ApplicationController
     #   puts "Try again"
     # end
   end
-
-
 
   def destroy
     #find object to delete with .find
