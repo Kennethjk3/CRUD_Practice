@@ -1,53 +1,49 @@
+# Refactored
+
 class BookmarksController < ApplicationController
+  # before_action what method is called, only: [put what methods need them]
+  before_action :find_bookmark, only: [:show, :edit, :update, :destroy]
 
   def index
     #1st find all Bookmarks from database
     #Bookmark.all == SELECT * FROM bookmarks;
-    @bookmarks = Bookmark.all
+    # using (class).order(:how you want to sort) == *.all, and sorting
+    @bookmarks = Bookmark.order(:title)
   end
 
   def show
-    @bookmark = Bookmark.find(params[:id])
   end
 
   def new
-    #used as placeholder in html/ object.exsist? = no
     @bookmark = Bookmark.new
   end
 
   def create
-    # Saves to DB
-    @bookmark = Bookmark.create(bookmark_params)
-
-    # # This way allows for testing
-    # @bookmark = Bookmark.new(bookmark_parms)
-    # if @bookmark.save
-    #   puts "Saved"
-    # else
-    #   puts "Try again"
-    # end
-
-    redirect_to action: :index
+    @bookmark = Bookmark.new(bookmark_params)
+    # Exsists but isn't saved to Database
+    if bookmark.save
+      redirect_to action: :index
+      # this does create a HTTP request
+    else
+      render :new
+      #doesnt create a new HTTP request, so no need to create new objects
+      # render looks for template with same name
+    end
   end
 
   def edit
-    @bookmark = Bookmark.find(params[:id])
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
-    @bookmark.update_attributes(bookmark_params)
-    redirect_to action: :index
-    # if @bookmark.save
-    #   puts "Saved"
-    # else
-    #   puts "Try again"
-    # end
+    if @bookmark.update_attributes(bookmark_params)
+      redirect_to action: :index
+    else
+      render :edit
+    end
   end
 
   def destroy
     #find object to delete with .find
-    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
     redirect_to action: :index
   end
@@ -57,6 +53,10 @@ class BookmarksController < ApplicationController
 
 
   private
+
+  def find_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
 
   def bookmark_params
     params.require(:bookmark).permit(:url, :title, :comment, :favorite)
